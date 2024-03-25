@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,7 @@ namespace Lab3Wpf
     {
         public MainWindow()
         {
+
             InitializeComponent();
         }
 
@@ -94,6 +97,41 @@ namespace Lab3Wpf
             {
                 textBox.Foreground = new SolidColorBrush(Colors.Red);
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            //dialog.ShowDialog();
+            if(dialog.ShowDialog() == true) 
+            {             
+                textBox.Text = File.ReadAllText(dialog.FileName);
+            }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
+            //saveFileDialog.ShowDialog();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, textBox.Text);
+            }
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void MenuItem_Click3(object sender, RoutedEventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            menu.WindowStyle = WindowStyle.ToolWindow;
+            menu.ShowDialog();
         }
     }
 }
