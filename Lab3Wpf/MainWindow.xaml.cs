@@ -99,18 +99,27 @@ namespace Lab3Wpf
             }
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+
+        private void MenuItem_Click3(object sender, RoutedEventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            menu.WindowStyle = WindowStyle.ToolWindow;
+            menu.ShowDialog();
+        }
+
+        private void MenuItem_Click(object sender, ExecutedRoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Текстовые файлы (*.txt)|*.txt";
             //dialog.ShowDialog();
-            if(dialog.ShowDialog() == true) 
-            {             
+            if (dialog.ShowDialog() == true)
+            {
                 textBox.Text = File.ReadAllText(dialog.FileName);
             }
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_1(object sender, ExecutedRoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Текстовые файлы (*.txt)|*.txt";
@@ -121,17 +130,15 @@ namespace Lab3Wpf
             }
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        private void ExitExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-        }
 
-        private void MenuItem_Click3(object sender, RoutedEventArgs e)
-        {
-            Menu menu = new Menu();
-            menu.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            menu.WindowStyle = WindowStyle.ToolWindow;
-            menu.ShowDialog();
+           MessageBoxResult exitQuestion = MessageBox.Show("Вы уверены, что хотите выйти?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (exitQuestion == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+
         }
     }
 }

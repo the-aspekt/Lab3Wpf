@@ -6,13 +6,18 @@
         xmlns:local="clr-namespace:Lab3Wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding Command="Open" Executed="MenuItem_Click"/>
+        <CommandBinding Command="Save" Executed="MenuItem_Click_1"/>
+        <CommandBinding Command="local:MyCommands.Exit" Executed="ExitExecuted"/>
+    </Window.CommandBindings>
     <DockPanel>
         <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Padding="5" Background="White">
             <MenuItem Header="_Файл">
-                <MenuItem Header="_Открыть" Click="MenuItem_Click"/>
-                <MenuItem Header="_Сохранить" Click="MenuItem_Click_1"/>
+                <MenuItem Header="_Открыть" Command="Open"/>
+                <MenuItem Header="_Сохранить" Command="Save"/>
                 <Separator/>
-                <MenuItem Header="_Выход" Click="MenuItem_Click_2"/>
+                <MenuItem Header="_Выход" Command="local:MyCommands.Exit"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="Справ_ка" Click="MenuItem_Click3"/>                
