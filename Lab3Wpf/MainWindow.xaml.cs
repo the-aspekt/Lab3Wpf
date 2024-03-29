@@ -32,7 +32,7 @@ namespace Lab3Wpf
         {
             if (textBox != null)
             {
-                string selectedFont = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+                string selectedFont = ((sender as ComboBox).SelectedItem as string);
                 textBox.FontFamily = new FontFamily(selectedFont);
             }
         }
@@ -41,7 +41,7 @@ namespace Lab3Wpf
         {
             if (textBox != null)
             {
-                int selectedFontSize = Convert.ToInt16(((sender as ComboBox).SelectedItem as TextBlock).Text);
+                int selectedFontSize = Convert.ToInt16(((sender as ComboBox).SelectedItem as string));
                 textBox.FontSize = selectedFontSize;
             }
         }

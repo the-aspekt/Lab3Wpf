@@ -30,16 +30,11 @@
         </Grid.RowDefinitions>
         <ToolBarTray Grid.Row="0" Margin="5" Background="White">
                 <ToolBar Background="White">
-                <ComboBox Width="200" VerticalAlignment="Center" Margin="5" Padding="5" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
-                    <TextBlock Text="Arial"/>
-                    <TextBlock Text="Times New Roman"/>
-                    <TextBlock Text="Verdana"/>
-                </ComboBox>
-                <ComboBox Width="50" VerticalAlignment="Center" Margin="5" Padding="5" SelectedIndex="1" SelectionChanged="ComboBox_SelectionChanged_1">
-                    <TextBlock Text="14"/>
-                    <TextBlock Text="18"/>
-                    <TextBlock Text="22"/>
-                </ComboBox>
+                    <ComboBox Width="200" VerticalAlignment="Center" Margin="5" Padding="5" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{StaticResource fonts}"/>
+
+
+                    <ComboBox Width="50" VerticalAlignment="Center" Margin="5" Padding="5" SelectedIndex="1" SelectionChanged="ComboBox_SelectionChanged_1" ItemsSource="{StaticResource sizes}"/>
+                                
                     <Separator Background="White"/>
                     
             </ToolBar >
