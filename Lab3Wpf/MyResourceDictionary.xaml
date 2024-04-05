@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
     <col:ArrayList x:Key="fonts">
         <sys:String>Arial</sys:String>
         <sys:String>Verdana</sys:String>
@@ -14,4 +15,5 @@
         <sys:String>20</sys:String>
         <sys:String>24</sys:String>
     </col:ArrayList>
+    
 </ResourceDictionary>

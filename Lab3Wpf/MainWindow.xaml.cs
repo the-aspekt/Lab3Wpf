@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,10 +23,16 @@ namespace Lab3Wpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<string> styles = new List<string>() { "White.xaml", "Dark.xaml" };
+
         public MainWindow()
         {
 
             InitializeComponent();
+            
+            Uri uri = new Uri(styles[0], UriKind.Relative);
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(Application.LoadComponent(uri) as ResourceDictionary);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -140,5 +147,20 @@ namespace Lab3Wpf
             }
 
         }
+
+        private void DarkThemeExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            Uri uri = new Uri(styles[0], UriKind.Relative);
+
+            if (ThemeFlag.IsChecked == true)
+            {
+                uri = new Uri(styles[1], UriKind.Relative);
+            }
+            
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(Application.LoadComponent(uri) as ResourceDictionary);
+
+        }
+
     }
 }
